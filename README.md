@@ -23,4 +23,4 @@
 
 ## Sample request with HTTP Client: 
 
-![HTTP Client](./images/get-request.png)
+![HTTP Client](./images/get-request.png)# assignment02-enamulhoq
