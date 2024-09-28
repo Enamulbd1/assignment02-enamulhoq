@@ -50,28 +50,22 @@ test.describe('Test Suite 01- car rental test', () => {
 test('Test case 04 - create post to add a customer', async ({ request }) => {
   // Generate fake customer data
   const customerData = {
-    username: faker.internet.userName(),        // Generates a random username
-    name: faker.name.fullName(),                // Generates a random full name
-    address: faker.address.streetAddress(),     // Generates a random address
-    email: faker.internet.email(),              // Generates a random email
-    phoneNumber: faker.phone.number(),          // Generates a random phone number
+    username: faker.internet.userName(), 
+    name: faker.name.fullName(),               
+    address: faker.address.streetAddress(),     
+    email: faker.internet.email(),              
+    phoneNumber: faker.phone.number(),          
   };
 
   // Send a POST request to add a new customer
   const createCustomerResponse = await request.post('http://localhost:9090/api/v1/addcustomer', {
     headers: {
-      'Content-Type': 'application/json',  // Set the content type to JSON
+      'Content-Type': 'application/json',
     },
-    data: customerData,  // Send the generated customer data
+    data: customerData,
   });
-
-  // Assert that the request was successful
   expect(createCustomerResponse.ok()).toBeTruthy();
-
-  // Optionally, log the response
   const responseData = await createCustomerResponse.json();
-  // console.log('Response Body:', responseData);
-
   //  Verify the response matches the sent data
   expect(responseData).toMatchObject({
     username: customerData.username,
