@@ -3,13 +3,44 @@ POST http://localhost:9090/api/v1/myorders
 Content-Type: application/json
 
 {
-  "id": 3
+  "id": 1,
 }
 
 ###
+GET http://localhost:9090/api/v1/customers
+
+###
 
 GET http://localhost:9090/api/v1/allcars
 
 ###
-GET http://localhost:9090/api/v1/allcars
+POST  http://localhost:9090/api/v1/addcar
+Content-Type: application/json
 
+ {
+    "pricePerDay": 2021.0,
+    "fabric": "Fabric22",
+    "model": "Model22",
+    "registrationNumber": "REG922",
+    "isBooked": false
+  },
+  
+###
+POST http://localhost:9090/api/v1/addcustomer
+Content-Type: application/json
+
+{
+  "username": "Enamul1",
+  "name": "Enamul Hoq",
+  "address": "Flintlåsvägen 1",
+  "email": "enam@gmail.com",
+  "phoneNumber": "0763907864"
+}
+
+###
+DELETE http://localhost:9090/api/v1/deletecar
+Content-Type: application/json
+
+{
+  "id": 7
+}
