@@ -168,9 +168,26 @@ test('Test case 08 - delete a customer by ID', async ({ request }) => {
    expect(deleteCustomerResponse.status()).toBe(404);
 
    const getDeletedCustomerResponse = await request.get(`http://localhost:9090/api/v1/customers/${lastButOneCustomerID}`);
-   expect(getDeletedCustomerResponse.status()).toBe(404);
-  
-  
+   expect(getDeletedCustomerResponse.status()).toBe(404); 
+});
+
+test('Test case 09 - check all the orders', async ({ request }) => {
+  const getPostsResponse = await request.get('http://localhost:9090/api/v1/orders');
+  expect (getPostsResponse.ok()).toBeTruthy();
+  expect ( getPostsResponse.status()).toBe(200);
+})
+
+test('Test case 10 -post to myOrder', async ({ request }) => {
+  const ordereData = {
+      "id": 1
+  }
+
+   const addOrderResponse = await request.post('http://localhost:9090/api/v1/myorders', {
+    data: ordereData 
+});
+
+  expect(addOrderResponse.ok()).toBeTruthy();
+  expect(addOrderResponse.status()).toBe(200);
 });
 
 });
