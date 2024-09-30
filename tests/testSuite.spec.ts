@@ -79,9 +79,9 @@ test('Test case 05 - delete a car by ID', async ({ request }) => {
   const getPostsResponse = await request.get('http://localhost:9090/api/v1/allcars');
   expect(getPostsResponse.ok()).toBeTruthy();
   
-   const allCustomers = await getPostsResponse.json();
+   const allCars = await getPostsResponse.json();
 
-   const lastButOneCustomerID = allCustomers[allCustomers.length - 2].id;
+   const lastButOneCustomerID = allCars[allCars.length - 2].id;
   
    const deleteCustomerResponse = await request.delete(`http://localhost:9090/api/v1/deletecar/${lastButOneCustomerID}`);
    expect(deleteCustomerResponse.status()).toBe(404);
@@ -93,16 +93,16 @@ test('Test case 05 - delete a car by ID', async ({ request }) => {
 });
 
 test('Test case 06 - update a car by ID', async ({ request }) => {
-  const getAllCustomers = await request.get('http://localhost:9090/api/v1/allcars');
-  expect(getAllCustomers.ok()).toBeTruthy();
+  const getAllCars = await request.get('http://localhost:9090/api/v1/allcars');
+  expect(getAllCars.ok()).toBeTruthy();
   
-  const allCustomers = await getAllCustomers.json();
-  const customerToUpdate = allCustomers[1];
-  const customerID = customerToUpdate.id;
+  const allCars = await getAllCars.json();
+  const carToUpdate = allCars[1];
+  const carID = carToUpdate.id;
 
   // new data for the car update
-  const updatedCustomerDetails = {
-    id: customerID,
+  const updatedCarDetails = {
+    id: carID,
     pricePerDay: parseFloat(faker.finance.amount()),
     fabric: faker.vehicle.color(),     
     model: faker.vehicle.model(), 
@@ -114,7 +114,7 @@ test('Test case 06 - update a car by ID', async ({ request }) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    data: JSON.stringify(updatedCustomerDetails), // Passing the updated car details in the request body
+    data: JSON.stringify(updatedCarDetails), // Passing the updated car details in the request body
   });
    expect(updateCustomerResponse.ok()).toBeTruthy();
 
