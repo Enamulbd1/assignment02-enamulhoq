@@ -81,14 +81,14 @@ test('Test case 05 - delete a car by ID', async ({ request }) => {
   const getPostsResponse = await request.get('http://localhost:9090/api/v1/allcars');
   expect(getPostsResponse.ok()).toBeTruthy();
   
-   const allCars = await getPostsResponse.json();
+   const allCustomers = await getPostsResponse.json();
 
-   const lastButOnePostID = allCars[allCars.length - 2].id;
+   const lastButOneCustomerID = allCustomers[allCustomers.length - 2].id;
   
-   const deletePostResponse = await request.delete(`http://localhost:9090/api/v1/deletecar/${lastButOnePostID}`);
-   expect(deletePostResponse.status()).toBe(404);
+   const deleteCustomerResponse = await request.delete(`http://localhost:9090/api/v1/deletecar/${lastButOneCustomerID}`);
+   expect(deleteCustomerResponse.status()).toBe(404);
 
-   const getDeletedCarResponse = await request.get(`http://localhost:9090/api/v1/getcar/${lastButOnePostID}`);
+   const getDeletedCarResponse = await request.get(`http://localhost:9090/api/v1/getcar/${lastButOneCustomerID}`);
    expect(getDeletedCarResponse.status()).toBe(404);
   
   
@@ -97,9 +97,9 @@ test('Test case 05 - delete a car by ID', async ({ request }) => {
 test('Test case 06 - update a car by ID', async ({ request }) => {
   const getAllCustomers = await request.get('http://localhost:9090/api/v1/allcars');
   expect(getAllCustomers.ok()).toBeTruthy();
-
-  const allCars = await getAllCustomers.json();
-  const customerToUpdate = allCars[1];
+  
+  const allCustomers = await getAllCustomers.json();
+  const customerToUpdate = allCustomers[1];
   const customerID = customerToUpdate.id;
 
   // new data for the car update
@@ -133,7 +133,7 @@ test('Test case 07 - update a customer by ID', async ({ request }) => {
   const customerToUpdate = allCustomers[5];
   const customerID = customerToUpdate.id;
 
-  // new data for the car update
+  // new data for the customer update
   const updatedCustomerDetails = {
     id: customerID,
     username: "Mehmet01",
@@ -147,13 +147,30 @@ test('Test case 07 - update a customer by ID', async ({ request }) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    data: JSON.stringify(updatedCustomerDetails), // Passing the updated car details in the request body
+    data: JSON.stringify(updatedCustomerDetails), // Passing the updated customer details in the request body
   });
    expect(updateCustomerResponse.ok()).toBeTruthy();
 
   const getUpdatedCustomerResponse = await request.get("http://localhost:9090/api/v1/customers");
   expect(getUpdatedCustomerResponse.ok()).toBeTruthy();
+});
 
+test('Test case 08 - delete a customer by ID', async ({ request }) => {
+  // Get the list of all customers
+  const getPostsResponse = await request.get('http://localhost:9090/api/v1/customers');
+  expect(getPostsResponse.ok()).toBeTruthy();
+  
+   const allCustomers = await getPostsResponse.json();
+
+   const lastButOneCustomerID = allCustomers[allCustomers.length - 3].id;
+  
+   const deleteCustomerResponse = await request.delete(`http://localhost:9090/api/v1/deletecustomer/${lastButOneCustomerID}`);
+   expect(deleteCustomerResponse.status()).toBe(404);
+
+   const getDeletedCustomerResponse = await request.get(`http://localhost:9090/api/v1/customers/${lastButOneCustomerID}`);
+   expect(getDeletedCustomerResponse.status()).toBe(404);
+  
+  
 });
 
 });

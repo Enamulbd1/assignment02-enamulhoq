@@ -71,3 +71,15 @@ Content-Type: application/json
   "phoneNumber": "0763908046"
 }
 
+###
+DELETE http://localhost:9090/api/v1/deletecustomer
+Content-Type: application/json
+
+  {
+    "id": 8,
+    "username": "Minnie64",
+    "name": "Arthur Labadie",
+    "address": "8149 Westfield Road",
+    "email": "Arvel_Littel@gmail.com",
+    "phoneNumber": "1-375-628-7059"
+  },
