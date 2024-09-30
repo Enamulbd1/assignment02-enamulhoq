@@ -42,5 +42,32 @@ DELETE http://localhost:9090/api/v1/deletecar
 Content-Type: application/json
 
 {
-  "id": 7
+  "id": 9
 }
+###
+
+PUT http://localhost:9090/api/v1/updatecar
+Content-Type: application/json
+
+{
+  "id": 1,
+  "pricePerDay": 1000.0,
+  "fabric": "Orange2",
+  "model": "volvo v60",
+  "registrationNumber": "NBD679",
+  "isBooked": true
+}
+
+###
+PUT http://localhost:9090/api/v1/updatecustomer
+Content-Type: application/json
+
+{
+  "id": 5,
+  "username": "Mehmet01",
+  "name": "Mehmet",
+  "address": "sollentuna",
+  "email": "mehmet@gmail.com",
+  "phoneNumber": "0763908046"
+}
+
