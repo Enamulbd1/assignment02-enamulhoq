@@ -2,8 +2,6 @@ import { test, expect } from '@playwright/test';
 import { faker} from "@faker-js/faker"
 
 
-
-
 test.describe('Test Suite 01- car rental test', () => {
   test('Test case 01-check all the cars', async ({ request }) => {
     const getPostsResponse = await request.get('http://localhost:9090/api/v1/allcars');
@@ -181,11 +179,9 @@ test('Test case 10 -post to myOrder', async ({ request }) => {
   const ordereData = {
       "id": 1
   }
-
    const addOrderResponse = await request.post('http://localhost:9090/api/v1/myorders', {
     data: ordereData 
 });
-
   expect(addOrderResponse.ok()).toBeTruthy();
   expect(addOrderResponse.status()).toBe(200);
 });
