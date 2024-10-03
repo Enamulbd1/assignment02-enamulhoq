@@ -1,4 +1,0 @@
-2024-04-27 14:33:47,296 INFO CarService addCar: Admin added a car with ID: null
-2024-04-27 14:45:27,430 INFO CarService addCar: Admin added a car
-2024-04-27 14:45:34,328 INFO CarService updateCar: Admin updated a car
-2024-04-27 14:45:40,842 INFO CarService deleteCar: Admin deleted a car
